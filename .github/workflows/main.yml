@@ -1,0 +1,38 @@
+name: Build and Deploy Script
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.10.0
+
+      # Step 3: Install Dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 4: Install Angular CLI (specific version)
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli@18.2.0
+
+      # Step 5: Build the Angular App
+      - name: Build Angular App
+        run: ng build 
+
+
