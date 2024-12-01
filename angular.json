@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "jenkinks_angular_app": {
+    "jenkins_angular_app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,8 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/jenkinks_angular_app",
+            "outputPath": "dist/jenkins_angular_app",
             "index": "src/index.html",
+            "baseHref": "/Jenkins_angular_app/",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
@@ -59,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "jenkinks_angular_app:build:production"
+              "buildTarget": "jenkins_angular_app:build:production"
             },
             "development": {
-              "buildTarget": "jenkinks_angular_app:build:development"
+              "buildTarget": "jenkins_angular_app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -89,8 +90,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy":{
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "repo": "https://github.com/zoufisha786/Jenkins_angular_app.git",
+            "branch": "gh-pages",
+            "dir": "dist/jenkins_angular_app/browser"
         }
       }
     }
   }
+}
 }
